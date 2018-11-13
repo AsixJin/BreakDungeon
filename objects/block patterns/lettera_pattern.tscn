@@ -1,0 +1,198 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/pattern.gd" type="Script" id=1]
+[ext_resource path="res://objects/block.tscn" type="PackedScene" id=2]
+
+[node name="lettera_pattern" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+defaultMonsterBlocks = 3
+
+[node name="block_area" type="Panel" parent="." index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 128.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="block" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block11" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block25" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 40 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block26" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 56 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block27" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 72 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block21" parent="." index="6" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block28" parent="." index="7" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 104 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block29" parent="." index="8" instance=ExtResource( 2 )]
+
+position = Vector2( 8, 120 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block2" parent="." index="9" instance=ExtResource( 2 )]
+
+position = Vector2( 24, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block10" parent="." index="10" instance=ExtResource( 2 )]
+
+position = Vector2( 24, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block18" parent="." index="11" instance=ExtResource( 2 )]
+
+position = Vector2( 24, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block3" parent="." index="12" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block9" parent="." index="13" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block24" parent="." index="14" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block4" parent="." index="15" instance=ExtResource( 2 )]
+
+position = Vector2( 56, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block13" parent="." index="16" instance=ExtResource( 2 )]
+
+position = Vector2( 56, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block19" parent="." index="17" instance=ExtResource( 2 )]
+
+position = Vector2( 56, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block5" parent="." index="18" instance=ExtResource( 2 )]
+
+position = Vector2( 72, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block12" parent="." index="19" instance=ExtResource( 2 )]
+
+position = Vector2( 72, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block20" parent="." index="20" instance=ExtResource( 2 )]
+
+position = Vector2( 72, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block6" parent="." index="21" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block14" parent="." index="22" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block22" parent="." index="23" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block7" parent="." index="24" instance=ExtResource( 2 )]
+
+position = Vector2( 104, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block16" parent="." index="25" instance=ExtResource( 2 )]
+
+position = Vector2( 104, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block23" parent="." index="26" instance=ExtResource( 2 )]
+
+position = Vector2( 104, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block8" parent="." index="27" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 8 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block15" parent="." index="28" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 24 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block30" parent="." index="29" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 40 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block31" parent="." index="30" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 56 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block32" parent="." index="31" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 72 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block17" parent="." index="32" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 88 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block33" parent="." index="33" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 104 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="block34" parent="." index="34" instance=ExtResource( 2 )]
+
+position = Vector2( 120, 120 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+

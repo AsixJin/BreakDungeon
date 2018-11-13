@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/pattern.gd" type="Script" id=1]
+[ext_resource path="res://objects/block.tscn" type="PackedScene" id=2]
+
+[node name="happyface_pattern" type="Node2D"]
+
+script = ExtResource( 1 )
+defaultMonsterBlocks = 3
+
+[node name="block_area" type="Panel" parent="." index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 128.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="block" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 40 )
+
+[node name="block14" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 8 )
+
+[node name="block15" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 24 )
+
+[node name="block16" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 24 )
+
+[node name="block2" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 56 )
+
+[node name="block3" parent="." index="6" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 72 )
+
+[node name="block4" parent="." index="7" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 72 )
+
+[node name="block7" parent="." index="8" instance=ExtResource( 2 )]
+
+position = Vector2( 104, 104 )
+
+[node name="block8" parent="." index="9" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 120 )
+
+[node name="block9" parent="." index="10" instance=ExtResource( 2 )]
+
+position = Vector2( 72, 120 )
+
+[node name="block10" parent="." index="11" instance=ExtResource( 2 )]
+
+position = Vector2( 56, 120 )
+
+[node name="block11" parent="." index="12" instance=ExtResource( 2 )]
+
+position = Vector2( 40, 120 )
+
+[node name="block12" parent="." index="13" instance=ExtResource( 2 )]
+
+position = Vector2( 24, 104 )
+
+[node name="block5" parent="." index="14" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 56 )
+
+[node name="block6" parent="." index="15" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 40 )
+
+[node name="block13" parent="." index="16" instance=ExtResource( 2 )]
+
+position = Vector2( 88, 8 )
+
+

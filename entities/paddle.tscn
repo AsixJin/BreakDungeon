@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 4 )
 
-[node name="paddle" type="StaticBody2D" index="0"]
+[node name="paddle" type="StaticBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -25,7 +25,6 @@ _sections_unfolded = [ "Offset" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-visible = false
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 

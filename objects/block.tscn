@@ -8,11 +8,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="block" type="Sprite"]
+[node name="block" type="Sprite" index="0"]
 
 texture = ExtResource( 1 )
 hframes = 4
 script = ExtResource( 2 )
+_sections_unfolded = [ "Animation" ]
 isMonsterBlock = false
 setRandDurability = true
 maxDurability = 1

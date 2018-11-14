@@ -75,7 +75,7 @@ func controls_loop():
 func destroy():
 	emit_signal('playerHasDied')
 	print('The player has died. Game Over.')
-	queue_free()
+	.destroy()
 
 func createPaddle():
 	if paddle == null:
@@ -112,5 +112,4 @@ func switchToFight():
 	# Tell the player to destroy the paddle
 	destroyPaddle()
 	# Tell the player to destroy the ball
-	
 	pass

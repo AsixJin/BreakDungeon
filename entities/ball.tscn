@@ -27,7 +27,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 6.0
 
-[node name="ball" type="RigidBody2D"]
+[node name="ball" type="RigidBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1

@@ -73,6 +73,9 @@ func damage_loop(delta):
 			stuntimer = 0.2
 			# Set the knock back direction for the entity
 			knockdir = transform.origin - body.transform.origin
+			# play the hurt sounds if it has any
+			if $hurtSFX != null:
+				$hurtSFX.play()
 
 # Switch the entity's current animation to the one given
 func anim_switch(animation):

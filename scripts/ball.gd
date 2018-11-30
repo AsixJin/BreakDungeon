@@ -72,4 +72,5 @@ func adjust_angle():
 		set_linear_velocity(lv)
 
 func _on_Area2D_body_exited(body):
+	$hitSFX.play()
 	adjust_angle()

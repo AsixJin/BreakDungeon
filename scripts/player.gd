@@ -1,70 +1,89 @@
 extends 'res://scripts/entity.gd'
 
-# Scene
+# Make an object singleton
+# Maybe an entity singleton that can be built into the monster one
 const paddleScn = preload('res://entities/paddle.tscn')
 const ballScn = preload('res://entities/ball.tscn')
 
-# Const
+# The player's constantss
 const PADDLESPEED = 70
 const SPEED = 50
 const TYPE = 'PLAYER'
 
 # Signals
+# Sends a signal when the ball needs to be launched
 signal launchBall
+# Sends a signal when the player has died
 signal playerHasDied
 
 # Variables
+var inDebug = false
+
 var paddle = null
 var state = states.BREAK
 var usingItem = false
 
 func _ready():
-	createPaddle()
-	pass
+	# If we are in break mode then create the paddle
+	if state == states.BREAK:
+		createPaddle()
 
 func _process(delta):
+	# When the player's health reaches zero (0) 
+	# destroy it
 	if health <= 0:
-		# destroy()
+		destroy()
 		pass
 	
-	if Input.is_action_just_pressed('a') and state == states.FIGHT:
-		use_item(preload('res://objects/items/sword.tscn'))
-	if Input.is_action_just_pressed('a') and state == states.BREAK:
-		emit_signal('launchBall')
-
+	# If the player presses the 'A' key
+	# perform one of the following depending on the state
+	if Input.is_action_just_pressed(controls.action1):
+		if state == states.FIGHT:
+			# If in fight mode use the sword item
+			use_item(preload('res://objects/items/sword.tscn'))
+		elif state == states.BREAK:
+			# If in break mode send a signal to launch the ball
+			emit_signal('launchBall')
+		
 func _physics_process(delta):
 	controls_loop()
 	spritedir_loop()
+
+	# Run the loop for the apporiate state
 	if state == states.BREAK:
 		breakState()
 	elif state == states.FIGHT:
 		fightState(delta)
 
 func breakState():
-	# Move the paddle based on the PADDLESPEED
+	# Move the player based on the PADDLESPEED constant
 	var motion = movedir.normalized() * PADDLESPEED
 	move_and_slide(motion, Vector2())
 	
+	# Make sure to use the break mode animations for walk/idle
 	if movedir != Vector2():
 		anim_switch('breakwalk')
 	else:
 		anim_switch('breakidle')
 
 func fightState(delta):
+	# As long as the player isn't using an item
+	# they can mmove
 	if not usingItem:
 		movement_loop()
 	damage_loop(delta)
 	
+	# Make sure to use the regular animations here
 	if movedir != Vector2():
 		anim_switch(str('walk',spritedir))
 	else:
 		anim_switch(str('idle', spritedir))
 
 func controls_loop():
-	var LEFT = Input.is_action_pressed('ui_left')
-	var RIGHT = Input.is_action_pressed('ui_right')
-	var UP = Input.is_action_pressed('ui_up')
-	var DOWN = Input.is_action_pressed('ui_down')
+	var LEFT = Input.is_action_pressed(controls.dpad_left)
+	var RIGHT = Input.is_action_pressed(controls.dpad_right)
+	var UP = Input.is_action_pressed(controls.dpad_up)
+	var DOWN = Input.is_action_pressed(controls.dpad_down)
 	
 	movedir.x = -int(LEFT) + int(RIGHT)
 	if state == states.FIGHT:
@@ -74,8 +93,9 @@ func controls_loop():
 
 func destroy():
 	emit_signal('playerHasDied')
-	print('The player has died. Game Over.')
-	.destroy()
+	print('The player has died.')
+	if not inDebug:
+		.destroy()
 
 func createPaddle():
 	if paddle == null:

@@ -10,3 +10,7 @@ var movetimer = 2.5
 func _ready():
     # Every monster needs to add itself to the enemy group
 	add_to_group('ENEMY')
+
+func destroy():
+	stats.monstersDestroyed += 1
+	.destroy()

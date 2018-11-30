@@ -4,6 +4,8 @@ extends Node2D
 # Top Left: 180, 160
 # Bottom Right: 285, 255
 
+export var roomState = 'debug'
+
 # Make an object singleton
 # Maybe an entity singleton that can be built into the monster one
 var ballScn = preload("res://entities/ball.tscn")
@@ -16,29 +18,66 @@ var arenaWall = null
 var spawnPoints = [Vector2(180, 160), Vector2(230,181), Vector2(285,160)]
 
 func _ready():
+	# If the OS is not Android
+	# Disable the mobile controls
+	if OS.get_name() != "Android":
+		$ui/mobileUI.disableMobileControls()
 	# connect player died signal
+	$player.connect('playerHasDied', self, 'gameOver')
 	# Make sure the player is in break mode
 	$player.switchToBreak(false)
+	setupRoom()
+	pass
+
+func setupRoom():
+	match roomState:
+		states.DEBUG:
+			setupDebug()
+		states.MARATHON:
+			setupMarathon()
+		states.TIMEATTACK:
+			setupTimeAttack()
+
+func setupDebug():
 	## Generate a pattern
 	initBlocks(blockpatt.getRandomPattern())
+	# Set the player to debug mode
+	$player.inDebug = true
+
+func setupMarathon():
+	## Generate a pattern
+	initBlocks(blockpatt.getRandomPattern())
+
+func setupTimeAttack():
 	pass
 
 func _process(delta):
 	# Code for the health UI
 	# This needs to be in its own scene
-	if $player.health > 6:
-		$healthUI.frame = 6
-	elif $player.health < 0:
-		$healthUI.frame = 0
-	else:
-		$healthUI.frame = $player.health
+	if $player != null:
+		if $player.health > 6:
+			$ui/healthUI.frame = 6
+		elif $player.health < 0:
+			$ui/healthUI.frame = 0
+		else:
+			$ui/healthUI.frame = $player.health
 	
 	# If we are in fight mode with no monsters, switch to break mode
 	if get_tree().get_nodes_in_group('ENEMY').size() == 0 and not isBreakMode:
 		switchToBreak()
 	# If there are no blocks in the room, generate a new pattern
 	if get_tree().get_nodes_in_group('BLOCKS').size() == 0:
-		initBlocks(blockpatt.getRandomPattern())
+		onPatternClear()
+
+func onPatternClear():
+	stats.patternsCleared += 1
+	match roomState:
+		states.DEBUG:
+			initBlocks(blockpatt.getRandomPattern())
+		states.MARATHON:
+			initBlocks(blockpatt.getRandomPattern())
+		states.TIMEATTACK:
+			pass
 
 # Tell the player to create a new ball
 func checkForBall():
@@ -115,6 +154,4 @@ func spawnMonsters(num=3):
 
 # When player runs out of hearts
 func gameOver():
-	# Show Game Over dialog
-	# Allow button press to restart
-	pass
+	print('Player has lost the game.')

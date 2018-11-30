@@ -1,0 +1,219 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/room.gd" type="Script" id=1]
+[ext_resource path="res://scripts/pause.gd" type="Script" id=2]
+[ext_resource path="res://tilesets/dungeon.tres" type="TileSet" id=3]
+[ext_resource path="res://entities/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/graphics/healthUI.png" type="Texture" id=5]
+[ext_resource path="res://scripts/mobileControls.gd" type="Script" id=6]
+[ext_resource path="res://assets/graphics/button.png" type="Texture" id=7]
+[ext_resource path="res://scripts/inputButton.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 80, 10 )
+
+[sub_resource type="Gradient" id=2]
+
+offsets = PoolRealArray( 2, 2 )
+colors = PoolColorArray( 0.0898438, 0.0831757, 0.0831757, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+
+flags = 4
+gradient = SubResource( 2 )
+width = 2048
+
+[node name="mara_thon" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+roomState = "marathon"
+
+[node name="pause_node" type="Node" parent="." index="0"]
+
+pause_mode = 2
+script = ExtResource( 2 )
+_sections_unfolded = [ "Pause" ]
+
+[node name="mainTiles" type="TileMap" parent="." index="1"]
+
+editor/display_folded = true
+z_index = -10
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 3
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 10, 37, 0, 11, 26, 0, 12, 26, 0, 13, 26, 0, 14, 26, 0, 15, 26, 0, 16, 26, 0, 17, 26, 0, 18, 26, 0, 19, 35, 0, 65546, 37, 0, 65547, 26, 0, 65548, 26, 0, 65549, 26, 0, 65550, 26, 0, 65551, 26, 0, 65552, 26, 0, 65553, 26, 0, 65554, 26, 0, 65555, 35, 0, 131082, 37, 0, 131083, 26, 0, 131084, 26, 0, 131085, 26, 0, 131086, 26, 0, 131087, 26, 0, 131088, 26, 0, 131089, 26, 0, 131090, 26, 0, 131091, 35, 0, 196618, 37, 0, 196619, 26, 0, 196620, 26, 0, 196621, 26, 0, 196622, 26, 0, 196623, 26, 0, 196624, 26, 0, 196625, 26, 0, 196626, 26, 0, 196627, 35, 0, 262154, 37, 0, 262155, 26, 0, 262156, 26, 0, 262157, 26, 0, 262158, 26, 0, 262159, 26, 0, 262160, 26, 0, 262161, 26, 0, 262162, 26, 0, 262163, 35, 0, 327690, 37, 0, 327691, 26, 0, 327692, 26, 0, 327693, 26, 0, 327694, 26, 0, 327695, 26, 0, 327696, 26, 0, 327697, 26, 0, 327698, 26, 0, 327699, 35, 0, 393226, 37, 0, 393227, 26, 0, 393228, 26, 0, 393229, 26, 0, 393230, 26, 0, 393231, 26, 0, 393232, 26, 0, 393233, 26, 0, 393234, 26, 0, 393235, 35, 0, 458762, 37, 0, 458763, 26, 0, 458764, 26, 0, 458765, 26, 0, 458766, 26, 0, 458767, 26, 0, 458768, 26, 0, 458769, 26, 0, 458770, 26, 0, 458771, 35, 0, 524298, 37, 0, 524299, 26, 0, 524300, 26, 0, 524301, 26, 0, 524302, 26, 0, 524303, 26, 0, 524304, 26, 0, 524305, 26, 0, 524306, 26, 0, 524307, 35, 0, 589834, 37, 0, 589835, 26, 0, 589836, 26, 0, 589837, 26, 0, 589838, 26, 0, 589839, 26, 0, 589840, 26, 0, 589841, 26, 0, 589842, 26, 0, 589843, 35, 0, 655370, 37, 0, 655371, 26, 0, 655372, 26, 0, 655373, 26, 0, 655374, 26, 0, 655375, 26, 0, 655376, 26, 0, 655377, 26, 0, 655378, 26, 0, 655379, 35, 0, 720906, 37, 0, 720907, 26, 0, 720908, 26, 0, 720909, 26, 0, 720910, 26, 0, 720911, 26, 0, 720912, 26, 0, 720913, 26, 0, 720914, 26, 0, 720915, 35, 0, 786442, 37, 0, 786443, 26, 0, 786444, 26, 0, 786445, 26, 0, 786446, 26, 0, 786447, 26, 0, 786448, 26, 0, 786449, 26, 0, 786450, 26, 0, 786451, 35, 0, 851978, 37, 0, 851979, 26, 0, 851980, 26, 0, 851981, 26, 0, 851982, 26, 0, 851983, 26, 0, 851984, 26, 0, 851985, 26, 0, 851986, 26, 0, 851987, 35, 0, 917514, 37, 0, 917515, 26, 0, 917516, 26, 0, 917517, 26, 0, 917518, 26, 0, 917519, 26, 0, 917520, 26, 0, 917521, 26, 0, 917522, 26, 0, 917523, 35, 0, 983050, 37, 0, 983051, 26, 0, 983052, 26, 0, 983053, 26, 0, 983054, 26, 0, 983055, 26, 0, 983056, 26, 0, 983057, 26, 0, 983058, 26, 0, 983059, 35, 0, 1048586, 37, 0, 1048587, 26, 0, 1048588, 26, 0, 1048589, 26, 0, 1048590, 26, 0, 1048591, 26, 0, 1048592, 26, 0, 1048593, 26, 0, 1048594, 26, 0, 1048595, 35, 0, 1114122, 37, 0, 1114123, 26, 0, 1114124, 26, 0, 1114125, 26, 0, 1114126, 26, 0, 1114127, 26, 0, 1114128, 26, 0, 1114129, 26, 0, 1114130, 26, 0, 1114131, 35, 0 )
+_sections_unfolded = [ "Cell", "Collision", "Transform", "Z Index" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="mainTiles" index="0"]
+
+editor/display_folded = true
+position = Vector2( 240, -10 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mainTiles/StaticBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="player" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 232, 256 )
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[node name="ui" type="CanvasLayer" parent="." index="3"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="healthUI" type="Sprite" parent="ui" index="0"]
+
+position = Vector2( 112, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+vframes = 7
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
+
+[node name="mobileUI" type="Node2D" parent="ui" index="1"]
+
+editor/display_folded = true
+script = ExtResource( 6 )
+
+[node name="action1" type="TouchScreenButton" parent="ui/mobileUI" index="0"]
+
+position = Vector2( 364, 176 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = ""
+visibility_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Rect", "Transform" ]
+input = "action1"
+
+[node name="action2" type="TouchScreenButton" parent="ui/mobileUI" index="1"]
+
+position = Vector2( 432, 176 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = ""
+visibility_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+input = "action2"
+
+[node name="touchDpad" type="Node2D" parent="ui/mobileUI" index="2"]
+
+position = Vector2( 24, 0 )
+
+[node name="up" type="TouchScreenButton" parent="ui/mobileUI/touchDpad" index="0"]
+
+position = Vector2( 32, 144 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = ""
+visibility_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+input = "ui_up"
+
+[node name="right" type="TouchScreenButton" parent="ui/mobileUI/touchDpad" index="1"]
+
+position = Vector2( 64, 176 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = ""
+visibility_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+input = "ui_right"
+
+[node name="down" type="TouchScreenButton" parent="ui/mobileUI/touchDpad" index="2"]
+
+position = Vector2( 32, 208 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = ""
+visibility_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+input = "ui_down"
+
+[node name="left" type="TouchScreenButton" parent="ui/mobileUI/touchDpad" index="3"]
+
+position = Vector2( 0, 176 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = ""
+visibility_mode = 0
+script = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+input = "ui_left"
+
+[node name="Sprite" type="Sprite" parent="." index="4"]
+
+position = Vector2( -0.582916, 0 )
+scale = Vector2( 0.250374, 287.794 )
+z_index = -15
+texture = SubResource( 3 )
+centered = false
+_sections_unfolded = [ "Z Index" ]
+
+

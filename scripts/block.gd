@@ -21,9 +21,6 @@ func _ready():
 		durability = maxDurability
 
 func _process(delta):
-	if durability <= 0:
-		destroyBlock()
-	
 	frame = getDuraFrame()
 
 func getDuraFrame():
@@ -43,9 +40,13 @@ func revealMonsterBlock():
 	pass
 
 func destroyBlock():
+	# Keep up with the stats yo
+	stats.blocksDestroyed += 1
 	if isMonsterBlock:
 		# Send a signal
 		emit_signal('monstblockDestroyed')
+		# Count the stats you
+		stats.monsterBlocksDestroyed += 1
 	queue_free()
 
 func _on_hitbox_body_entered(body):
@@ -53,3 +54,5 @@ func _on_hitbox_body_entered(body):
 		durability -= 1
 		if durability == 1 and isMonsterBlock:
 			revealMonsterBlock()
+		elif durability <= 0:
+			destroyBlock()
